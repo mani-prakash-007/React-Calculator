@@ -1,0 +1,66 @@
+.buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+  border: 1px solid black;
+  border-radius: 20px;
+  margin: auto;
+  padding-top: 20px;
+  width: 440px;
+  height: 650px;
+  box-shadow: 0px 0px 50px black;
+  background-color: black;
+}
+
+input {
+  border: 2px solid rgb(0,0,0);
+  padding: 30px 40px 30px 9px;
+  border-radius: 20px;
+  font-size: 2rem;
+  background-color: rgb(61, 59, 59);
+  color: white;
+  background-color: black;
+  margin: 0px 20px;
+  text-align: right;
+}
+.btn-grid {
+  display: grid;
+  grid-template-columns: 100px 100px 100px 100px;
+  margin-top: 40px;
+  margin-left: 2.7rem;
+}
+
+.button {
+  border: 1px solid black;
+  padding: 23px;
+  border-radius: 50%;
+  text-align: center;
+  margin: 5px;
+  font-size: 2rem;
+  font-weight: bolder;
+  cursor: pointer;
+}
+.number {
+  background-color: rgb(51, 50, 50);
+  color: white;
+}
+.symbol {
+  background-color: #ff9500;
+  color: white;
+  font-size: xx-large;
+  font-weight: 800;
+}
+.symbol1 {
+  background-color: #ccc;
+  color: black;
+}
+.button:active {
+  transform: scale(0.9);
+}
+.double {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  border-radius: 60px;
+  padding-right: 6rem;
+  padding-left: 0px;
+}
