@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import "../styles/CalculatorBtn.css";
+import "../styles/Main.css";
 import { IoMdArrowRoundBack } from "react-icons/io";
 import { evaluate } from "mathjs";
 
-export const CalculatorBtn = () => {
+export const Main = () => {
   const [input, setInput] = useState("0");
 
   const handleInput = (userInput) => {
@@ -37,7 +37,7 @@ export const CalculatorBtn = () => {
   return (
     <div className="buttons">
       <div>
-        <input type="text" placeholder="0" value={input} readOnly />
+        <input type="text" placeholder="0" value={input} readOnly disabled />
         <div className="btn-grid">
           <div className="button symbol1" onClick={() => handleClear()}>
             AC
