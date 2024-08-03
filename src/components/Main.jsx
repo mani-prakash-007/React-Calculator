@@ -1,11 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../styles/Main.css";
-import { IoMdArrowRoundBack } from "react-icons/io";
+import { FaDeleteLeft } from "react-icons/fa6";
 import { evaluate } from "mathjs";
 
 export const Main = () => {
   const [input, setInput] = useState("0");
-
   const handleInput = (userInput) => {
     setInput((PrevUserInput) =>
       PrevUserInput === "0"
@@ -34,6 +33,53 @@ export const Main = () => {
       setInput(result);
     }
   };
+  useEffect(() => {
+    const handleKeyEvents = (e) => {
+      const allowedKeys = new Set([
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "+",
+        "-",
+        "*",
+        "/",
+        "%",
+        "=",
+        "^",
+        ".",
+        "(",
+        ")",
+        "Backspace",
+        "Enter",
+        "Delete",
+      ]);
+      if (allowedKeys.has(e.key)) {
+        e.preventDefault();
+        if (e.key === "Backspace") {
+          handleClearOne();
+        } else if (e.key === "Delete") {
+          handleClear();
+        } else if (e.key === "Enter" || e.key === "=") {
+          handleEval();
+        } else {
+          handleInput(e.key);
+        }
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyEvents);
+
+    return () => {
+      document.removeEventListener("keydown", handleKeyEvents);
+    };
+  }, [input]);
   return (
     <div className="buttons">
       <div>
@@ -43,7 +89,7 @@ export const Main = () => {
             AC
           </div>
           <div className="button symbol1" onClick={() => handleClearOne()}>
-            <IoMdArrowRoundBack />
+            <FaDeleteLeft />
           </div>
           <div className="button symbol1" onClick={() => handleInput("%")}>
             %
