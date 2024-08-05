@@ -120,5 +120,8 @@ button:active {
   height: 55vh;
   width: 370px;
   overflow-y: scroll;
-  border-radius: 10px;
+}
+
+.historyList::-webkit-scrollbar {
+  display: none;
 }
