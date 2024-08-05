@@ -64,3 +64,61 @@ input {
   padding-right: 6rem;
   padding-left: 0px;
 }
+
+.historybutton {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+button {
+  padding: 10px 30px;
+  border-radius: 10px;
+  background-color: black;
+  color: white;
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+  font-weight: bolder;
+  cursor: pointer;
+}
+
+button:active {
+  transform: scale(0.9);
+}
+
+.history {
+  margin-left: 3rem;
+  color: white;
+}
+.list {
+  font-size: 1.2rem;
+  padding-left: 1rem;
+}
+.clearBtn {
+  border: 1px solid #ff9500;
+  border-radius: 10px;
+  background-color: #ff9500;
+  margin-left: 10rem;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+.clearBtn:active {
+  transform: scale(0.9);
+}
+
+.historyHeader {
+  display: flex;
+  margin-bottom: 2.5rem;
+  margin-top: 1.5rem;
+}
+
+.historyHeading {
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.historyList {
+  height: 55vh;
+  width: 370px;
+  overflow-y: scroll;
+  border-radius: 10px;
+}
