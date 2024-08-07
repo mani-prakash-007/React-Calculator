@@ -1,15 +1,20 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "../styles/Main.css";
 import { FaDeleteLeft } from "react-icons/fa6";
 import { evaluate } from "mathjs";
 
 export const Main = () => {
+  //State Variables
   const [input, setInput] = useState("0");
   const [history, setHistory] = useState([]);
   const [btnValue, setBtnValue] = useState("History");
   const [calculatorDisplayValue, setCalculatorDisplayValue] = useState("Block");
   const [historyDisplayValue, setHistoryDisplayValue] = useState("none");
   const [contentAlignment, setContentAlignment] = useState("center");
+
+  //References
+  const divRef = useRef(null);
+  //Functions
   const handleInput = (userInput) => {
     setInput((PrevUserInput) =>
       PrevUserInput === "0"
@@ -40,53 +45,45 @@ export const Main = () => {
       setInput(result);
     }
   };
-  useEffect(() => {
-    const handleKeyEvents = (e) => {
-      const allowedKeys = new Set([
-        "0",
-        "1",
-        "2",
-        "3",
-        "4",
-        "5",
-        "6",
-        "7",
-        "8",
-        "9",
-        "+",
-        "-",
-        "*",
-        "/",
-        "%",
-        "=",
-        "^",
-        ".",
-        "(",
-        ")",
-        "Backspace",
-        "Enter",
-        "Delete",
-      ]);
-      if (allowedKeys.has(e.key)) {
-        e.preventDefault();
-        if (e.key === "Backspace") {
-          handleClearOne();
-        } else if (e.key === "Delete") {
-          handleClear();
-        } else if (e.key === "Enter" || e.key === "=") {
-          handleEval();
-        } else {
-          handleInput(e.key);
-        }
+  const handleKeyEvents = (e) => {
+    const allowedKeys = new Set([
+      "0",
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9",
+      "+",
+      "-",
+      "*",
+      "/",
+      "%",
+      "=",
+      "^",
+      ".",
+      "(",
+      ")",
+      "Backspace",
+      "Enter",
+      "Delete",
+    ]);
+    if (allowedKeys.has(e.key)) {
+      e.preventDefault();
+      if (e.key === "Backspace") {
+        handleClearOne();
+      } else if (e.key === "Delete") {
+        handleClear();
+      } else if (e.key === "Enter" || e.key === "=") {
+        handleEval();
+      } else {
+        handleInput(e.key);
       }
-    };
-
-    document.addEventListener("keydown", handleKeyEvents);
-
-    return () => {
-      document.removeEventListener("keydown", handleKeyEvents);
-    };
-  }, [input]);
+    }
+  };
 
   const showHistory = () => {
     if (btnValue === "History") {
@@ -106,9 +103,16 @@ export const Main = () => {
   const clearHistory = () => {
     setHistory([]);
   };
+  console.log("dkfjbdfbjh");
   return (
     <>
-      <div className="buttons" style={{ justifyContent: contentAlignment }}>
+      <div
+        className="buttons"
+        tabIndex={0}
+        onKeyDown={handleKeyEvents}
+        ref={divRef}
+        style={{ justifyContent: contentAlignment, outline: "none" }}
+      >
         <div style={{ display: calculatorDisplayValue }}>
           <input type="text" placeholder="0" value={input} readOnly disabled />
           <div className="btn-grid">
